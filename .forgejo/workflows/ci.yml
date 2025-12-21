@@ -9,11 +9,13 @@ jobs:
   ci:
     runs-on: docker
     name: Continuous Integration
-    container: rust:latest
     steps:
       - uses: actions/checkout@v4
+
       - name: cargo test
-        run: cargo test
+        uses: docker://rust:latest
+        with:
+          args: cargo test
       # uncomment to enable clippy linter
       # - name: cargo clippy
       #   run: cargo clippy -- -D warnings
