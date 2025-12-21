@@ -1,0 +1,13 @@
+steps:
+  hello:
+    image: alpine:latest
+    commands:
+      - echo "Hello from Woodpecker CI!"
+      - echo "Current directory: $(pwd)"
+      - ls -la
+
+  test:
+    image: alpine:latest
+    commands:
+      - echo "Running tests..."
+      - echo "All tests passed!"
