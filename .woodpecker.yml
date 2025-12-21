@@ -1,13 +1,15 @@
-steps:
-  hello:
-    image: alpine:latest
-    commands:
-      - echo "Hello from Woodpecker CI!"
-      - echo "Current directory: $(pwd)"
-      - ls -la
+when:
+  - event: push
+    branch: main
 
-  test:
-    image: alpine:latest
+steps:
+  - name: build
+    image: debian
     commands:
-      - echo "Running tests..."
-      - echo "All tests passed!"
+      - echo "This is the build step"
+      - echo "binary-data-123" > executable
+  - name: a-test-step
+    image: golang:1.16
+    commands:
+      - echo "Testing ..."
+      - ./executable
