@@ -1,6 +1,9 @@
 name: Update readme ⭐️ progress
 
-on: [push]
+on:
+  schedule:
+    - cron: "0 0 * * *" # Every 6 hours
+  workflow_dispatch:
 
 jobs:
   update-readme:
